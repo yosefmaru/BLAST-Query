@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method=post enctype=multipart/form-data>
+    <br>
+    <p>Attach a valid FASTA file:</p>
+    <p><input type=file name=file></p>
+    <p><input onclick="$('#loading').show();" type=submit value=Upload></p>
+</form>
+<div id="loading" style="display:none;"><img src="./loading.gif" alt="" />Loading ...</div>
+{% endblock %}

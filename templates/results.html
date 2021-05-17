@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for record in content %}
+<br>
+<div>
+  <h4>Query:  {{record.query}}</h4>
+</div>
+<div class="table-responsive">
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr style="text-align:center">
+              {% for item in headers %}
+              <th  white-space: nowrap scope="col">{{item}}</th>
+              {% endfor %}
+            </tr>
+        </thead>
+        
+        <tbody>
+          {% for align in record.alignments %}
+          <tr >
+            <td>{{align.hit_def}}</td>
+            <td>{{align.hit_id}}</td>
+            <td>{{align.accession}}</td>
+            <td>{{align.length}}</td>
+            <td white-space: nowrap>{{'{:0.2e}'.format(align.hsps[0].expect)}}</td>
+            <td style="text-align:center">{{align.hsps[0].score}}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+
+    </table>
+</div>
+<br>
+{% endfor %}
+{% endblock %}
